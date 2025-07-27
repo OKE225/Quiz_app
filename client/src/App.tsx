@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Container, Typography } from "@mui/material";
 
 const App = () => {
   const [message, setMessage] = useState<string>("");
@@ -13,10 +14,12 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Quiz app</h2>
-      <p>{message ? message : "ERROR: Bad server connection"}</p>
-    </div>
+    <Container maxWidth="xl">
+      <Typography variant="h2">Quiz app</Typography>
+      <Typography variant="body1">
+        {message ? message : "ERROR: Bad server connection"}
+      </Typography>
+    </Container>
   );
 };
 
