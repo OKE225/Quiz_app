@@ -59,5 +59,5 @@ const App = () => {
     </div>
   );
 };
-Implement simple quiz app functionality for testing
+
 export default App;
