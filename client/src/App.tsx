@@ -22,11 +22,10 @@ const App = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  // for (let i = 0; i <= questions.length; i++) {
-  //   console.log(questions[i]);
-  // }
-
   console.log(questionId);
+
+  const activeQuestionNumber = questionId + 1;
+  const questionsLenght = questions.length;
 
   return (
     <div className="m-1">
@@ -34,13 +33,16 @@ const App = () => {
         <h1 className="">Connecting...</h1>
       ) : questions[questionId] ? (
         <div>
+          <p>
+            Question {activeQuestionNumber} of {questionsLenght}
+          </p>
           <h1 className="">{questions[questionId].name}</h1>
           <ol className="list-[lower-alpha] list-inside grid grid-cols-2 gap-4 max-w-300">
             {questions[questionId].answers.map((answer, id) => (
               <button
                 key={id}
                 data-value={id}
-                className="focus:bg-green-500 block cursor-pointer"
+                className="focus:bg-green-500 focus:text-black block cursor-pointer"
                 // onClick={() => console.log(id)}
               >
                 <li>{answer}</li>
