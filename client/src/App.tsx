@@ -11,7 +11,7 @@ const App = () => {
   const [id, setId] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [answerValue, setAnswerValue] = useState<number | undefined>(undefined);
-  const [resultQuiz, setResultQuiz] = useState<number>(0);
+  const [correctAnswers, setCorrectAnswers] = useState<number>(0);
 
   useEffect(() => {
     fetch("http://localhost:3001/")
@@ -24,11 +24,15 @@ const App = () => {
   }, []);
 
   const activeQuestionNumber = id + 1;
-  const questionsLenght = questions.length;
+  const totalQuestions = questions.length;
+  const incorrectAnswers = totalQuestions - correctAnswers;
+  const percentCorrectAnswers = Math.round(
+    (correctAnswers * 100) / totalQuestions
+  );
 
   const addToResult = (answerValue: number | undefined) => {
     if (answerValue !== undefined && answerValue === questions[id].correct) {
-      setResultQuiz((prev) => prev + 1);
+      setCorrectAnswers((prev) => prev + 1);
     }
   };
 
@@ -39,7 +43,7 @@ const App = () => {
       ) : questions[id] ? (
         <div>
           <p>
-            Question {activeQuestionNumber} of {questionsLenght}
+            Question {activeQuestionNumber} of {totalQuestions}
           </p>
           <h1 className="">{questions[id].name}</h1>
           <ol className="list-[lower-alpha] list-inside grid grid-cols-2 gap-4 max-w-300">
@@ -57,6 +61,7 @@ const App = () => {
             className="bg-stone-700 absolute right-5 cursor-pointer"
             onClick={() => {
               setId((prev) => prev + 1);
+              setAnswerValue(undefined);
               addToResult(answerValue);
             }}>
             Next question →
@@ -64,9 +69,14 @@ const App = () => {
         </div>
       ) : (
         <>
-          <h1>No more questions.</h1>
+          <h2>Quiz Summary</h2>
+          <p>Your quiz results are in! Here's how you performed:</p>
+          <p>Correct answers: {correctAnswers}</p>
+          <p>Incorrect answers: {incorrectAnswers}</p>
+          <p>Total questions: {totalQuestions}</p>
           <p>
-            Your result is {resultQuiz} of {questionsLenght} questions
+            Your score: {correctAnswers}/{totalQuestions} -{" "}
+            {percentCorrectAnswers}%
           </p>
         </>
       )}
