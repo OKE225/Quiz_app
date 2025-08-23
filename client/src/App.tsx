@@ -17,7 +17,10 @@ const App = () => {
     fetch("http://localhost:3001/")
       .then((response) => response.json())
       .then((data) => {
-        setQuestions(data.quizQuestionsList);
+        const arr = data.quizQuestionsList;
+        arr.sort(() => 0.5 - Math.random());
+
+        setQuestions(arr);
         setIsLoading(false);
       })
       .catch((error) => console.error(error));
