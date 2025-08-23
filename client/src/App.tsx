@@ -14,7 +14,7 @@ const App = () => {
   const [correctAnswers, setCorrectAnswers] = useState<number>(0);
 
   useEffect(() => {
-    fetch("http://localhost:3001/")
+    fetch("http://localhost:5001/")
       .then((response) => response.json())
       .then((data) => {
         const arr = data.quizQuestionsList;

@@ -1,9 +1,11 @@
 const express = require("express");
 const mongo = require("mongodb");
 const cors = require("cors");
+const PORT = process.env.PORT || 5001;
 
 const app = express();
 
+app.use(express.json());
 app.use(cors());
 
 app.get("/", async (req, res) => {
@@ -11,7 +13,6 @@ app.get("/", async (req, res) => {
 
   try {
     await client.connect();
-    console.log("Connect to Database");
 
     const db = client.db("test");
     const quizQuestions = db.collection("questions");
@@ -26,6 +27,6 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.listen(3001, "localhost", () => {
-  console.log("Server is running on http://localhost:3001");
+app.listen(PORT, "localhost", () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
