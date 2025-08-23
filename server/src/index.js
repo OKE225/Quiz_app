@@ -1,8 +1,11 @@
 const express = require("express");
 const cors = require("cors");
-const { getAllQuestions } = require("./controllers/questionsController");
-const PORT = process.env.PORT || 5001;
+const dotenv = require("dotenv");
+const getAllQuestions = require("./controllers/questionsController");
 
+dotenv.config();
+
+const PORT = process.env.PORT || 5001;
 const app = express();
 
 app.use(express.json());
