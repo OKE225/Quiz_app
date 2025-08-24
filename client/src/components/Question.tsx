@@ -34,7 +34,7 @@ const Question: React.FC<Props> = ({
   };
 
   return (
-    <div className="w-175">
+    <div className="w-175 max-md:w-[90%] max-sm:pb-5">
       <CurrentQuestion totalQuestionsNumber={totalQuestionsNumber} id={id} />
       <QuestionName name={arrQuestions[id].name} />
       <QuestionAnswers

@@ -12,7 +12,7 @@ const QuizSummaryDetails: React.FC<Props> = ({
     (correctAnswers * 100) / totalQuestionsNumber
   );
   return (
-    <div className="mt-10 text-xl px-20 py-5 border border-2 border-stone-500 rounded-md">
+    <div className="mt-15 text-xl ">
       <p>
         Correct answers:{" "}
         <span className="text-green-600 font-semibold">{correctAnswers}</span>
