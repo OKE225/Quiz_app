@@ -13,15 +13,19 @@ const QuizSummaryDetails: React.FC<Props> = ({
   );
   return (
     <div className="mt-15 text-xl ">
+      <p>Total questions: {totalQuestionsNumber}</p>
       <p>
         Correct answers:{" "}
-        <span className="text-green-600 font-semibold">{correctAnswers}</span>
+        <span className="text-green-600 dark:text-green-500">
+          {correctAnswers}
+        </span>
       </p>
       <p>
         Incorrect answers:{" "}
-        <span className="text-red-600 font-semibold">{incorrectAnswers}</span>
+        <span className="text-red-600 dark:text-red-500">
+          {incorrectAnswers}
+        </span>
       </p>
-      <p>Total questions: {totalQuestionsNumber}</p>
       <p className="mt-2">
         Your score:{" "}
         <span className="font-semibold">

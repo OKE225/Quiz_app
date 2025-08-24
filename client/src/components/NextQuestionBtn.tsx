@@ -24,7 +24,7 @@ const NextQuestionBtn = ({
 
   return (
     <button
-      className="cursor-pointer mt-4 p-1 w-full text-lg border border-3 border-stone-300 hover:bg-stone-300 rounded-md"
+      className="cursor-pointer mt-4 p-1 w-full text-lg border border-3 border-stone-300 hover:bg-stone-300 rounded-md dark:border-zinc-800 dark:hover:bg-zinc-800"
       onClick={handleClick}>
       Next question →
     </button>
