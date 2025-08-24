@@ -12,7 +12,7 @@ interface Props {
 
 const QuestionAnswers = ({ currentQuestionAnswers, setAnswerValue }: Props) => {
   return (
-    <ol className="list-[lower-alpha] list-inside grid grid-cols-2 gap-4 max-w-300">
+    <ol className="list-[lower-alpha] list-inside grid grid-cols-2 gap-1">
       {currentQuestionAnswers.map((answer, id) => (
         <AnswerBtn
           key={id}

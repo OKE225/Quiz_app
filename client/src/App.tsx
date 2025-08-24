@@ -32,7 +32,7 @@ const App = () => {
   const totalQuestionsNumber: number = questions.length;
 
   return (
-    <div className="h-screen flex items-center justify-center flex-col">
+    <div className="h-screen flex items-center justify-center flex-col text-zinc-900">
       {isLoading ? (
         <Loading />
       ) : questions[id] ? (

@@ -12,15 +12,24 @@ const QuizSummaryDetails: React.FC<Props> = ({
     (correctAnswers * 100) / totalQuestionsNumber
   );
   return (
-    <>
-      <p>Correct answers: {correctAnswers}</p>
-      <p>Incorrect answers: {incorrectAnswers}</p>
-      <p>Total questions: {totalQuestionsNumber}</p>
+    <div className="mt-10 text-xl px-20 py-5 border border-2 border-stone-500 rounded-md">
       <p>
-        Your score: {correctAnswers}/{totalQuestionsNumber} -{" "}
-        {percentCorrectAnswers}%
+        Correct answers:{" "}
+        <span className="text-green-600 font-semibold">{correctAnswers}</span>
       </p>
-    </>
+      <p>
+        Incorrect answers:{" "}
+        <span className="text-red-600 font-semibold">{incorrectAnswers}</span>
+      </p>
+      <p>Total questions: {totalQuestionsNumber}</p>
+      <p className="mt-2">
+        Your score:{" "}
+        <span className="font-semibold">
+          {correctAnswers}/{totalQuestionsNumber}
+        </span>{" "}
+        - <span className="font-semibold">{percentCorrectAnswers}%</span>
+      </p>
+    </div>
   );
 };
 

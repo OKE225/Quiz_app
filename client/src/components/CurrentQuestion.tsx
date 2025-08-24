@@ -6,8 +6,8 @@ interface Props {
 const CurrentQuestion = ({ totalQuestionsNumber, id }: Props) => {
   const currentQuestionId: number = id + 1;
   return (
-    <p>
-      Question {currentQuestionId} of {totalQuestionsNumber}
+    <p className="text-lg">
+      {currentQuestionId} of {totalQuestionsNumber}
     </p>
   );
 };
