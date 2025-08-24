@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
+import Loading from "./components/Loading";
+import Question from "./components/Question";
+import QuizSummary from "./components/QuizSummary";
+import QuizSummaryDetails from "./components/QuizSummaryDetails";
 
-interface Question {
+interface QuestionObject {
   name: string;
   answers: string[];
   correct: number;
 }
 
 const App = () => {
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<QuestionObject[]>([]);
   const [id, setId] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [answerValue, setAnswerValue] = useState<number | undefined>(undefined);
   const [correctAnswers, setCorrectAnswers] = useState<number>(0);
 
   useEffect(() => {
@@ -26,61 +29,28 @@ const App = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const activeQuestionNumber = id + 1;
-  const totalQuestions = questions.length;
-  const incorrectAnswers = totalQuestions - correctAnswers;
-  const percentCorrectAnswers = Math.round(
-    (correctAnswers * 100) / totalQuestions
-  );
-
-  const addToResult = (answerValue: number | undefined) => {
-    if (answerValue !== undefined && answerValue === questions[id].correct) {
-      setCorrectAnswers((prev) => prev + 1);
-    }
-  };
+  const totalQuestionsNumber: number = questions.length;
 
   return (
-    <div className="m-1">
+    <div className="h-screen flex items-center justify-center flex-col">
       {isLoading ? (
-        <h1 className="">Connecting...</h1>
+        <Loading />
       ) : questions[id] ? (
-        <div>
-          <p>
-            Question {activeQuestionNumber} of {totalQuestions}
-          </p>
-          <h1 className="">{questions[id].name}</h1>
-          <ol className="list-[lower-alpha] list-inside grid grid-cols-2 gap-4 max-w-300">
-            {questions[id].answers.map((answer, id) => (
-              <button
-                key={id}
-                data-value={id}
-                className="focus:bg-green-500 focus:text-black block cursor-pointer"
-                onClick={() => setAnswerValue(id)}>
-                <li>{answer}</li>
-              </button>
-            ))}
-          </ol>
-          <button
-            className="bg-stone-700 absolute right-5 cursor-pointer"
-            onClick={() => {
-              setId((prev) => prev + 1);
-              setAnswerValue(undefined);
-              addToResult(answerValue);
-            }}>
-            Next question →
-          </button>
-        </div>
+        <Question
+          setCorrectAnswers={setCorrectAnswers}
+          totalQuestionsNumber={totalQuestionsNumber}
+          id={id}
+          setId={setId}
+          arrQuestions={questions}
+        />
       ) : (
         <>
-          <h2>Quiz Summary</h2>
-          <p>Your quiz results are in! Here's how you performed:</p>
-          <p>Correct answers: {correctAnswers}</p>
-          <p>Incorrect answers: {incorrectAnswers}</p>
-          <p>Total questions: {totalQuestions}</p>
-          <p>
-            Your score: {correctAnswers}/{totalQuestions} -{" "}
-            {percentCorrectAnswers}%
-          </p>
+          <QuizSummary>
+            <QuizSummaryDetails
+              correctAnswers={correctAnswers}
+              totalQuestionsNumber={totalQuestionsNumber}
+            />
+          </QuizSummary>
         </>
       )}
     </div>
