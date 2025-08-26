@@ -1,69 +1,44 @@
-# React + TypeScript + Vite
+# ❓ Quiz app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![GitHub License](https://img.shields.io/github/license/OKE225/Quiz_app?style=for-the-badge&labelColor=red&color=tomato)
+![Static Badge](https://img.shields.io/badge/OKE225-blue?style=for-the-badge&label=Author&labelColor=steelblue)
 
-Currently, two official plugins are available:
+This is a **MERN stack web application** that presents a single question with four possible answers. After completing the quiz, the user sees a summary with their results. The **site is fully responsive** and offers a clean, simple, and modern user interface
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The frontend is built with React, TypeScript, and TailwindCSS, which together create a visually appealing and **user-friendly design** that works well on all devices. **Dark mode is automatically enabled based on the user's system preferences** to provide a comfortable viewing experience
 
-## Expanding the ESLint configuration
+On the backend, the app uses Node.js and Express.js, while data is securely stored and managed on an external MongoDB server, ensuring scalable and reliable performance
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Quiz app - dark mode](./docs/dark_mode.png)
+dark mode
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+![Quiz app - light mode](./docs/light_mode.png)
+light mode
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## ⚙️ Technologies Used
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+<p align="left">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=react,ts,tailwind,nodejs,express,mongodb,js,css,html" />  
+   </a>
+</p>
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 💻 Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **TailwindCSS Design** - The design using TailwindCSS provides a nice, modern, and user-friendly interface that looks good on all devices
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Simple Interface** - The app has a clean and simple design that works well on different devices, making it easy to use
+
+- **Dark Mode** - Dark mode is automatically set based on the user's preferences, making it easier on the eyes
+
+- **Score Counting and Summary** - After finishing the test, the score is automatically calculated and a summary is shown to help the user see their results
+
+- **MongoDB Database** - Data is stored on an external server using MongoDB, which ensures safe and scalable data management
+
+## 📄 License
+
+The [MIT License](./LICENSE) (MIT). Please see License File for more information.
+
+## 🔎 See Also
+
+[GitHub profile](https://github.com/OKE225)
