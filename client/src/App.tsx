@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
 import Loading from "./components/Loading";
-import Question from "./components/Question";
+import CurrentQuestion from "./components/CurrentQuestion";
 import QuizSummary from "./components/QuizSummary";
 import QuizSummaryDetails from "./components/QuizSummaryDetails";
-
-interface QuestionObject {
-  name: string;
-  answers: string[];
-  correct: number;
-}
+import type { QuestionObject } from "./interfaces/interfaces";
 
 const App = () => {
   const [questions, setQuestions] = useState<QuestionObject[]>([]);
@@ -21,27 +16,31 @@ const App = () => {
       .then((response) => response.json())
       .then((data) => {
         const arr = data.quizQuestionsList;
-        arr.sort(() => 0.5 - Math.random());
+        const randomSortArr = arr.sort(() => 0.5 - Math.random());
 
-        setQuestions(arr);
+        setQuestions(randomSortArr);
         setIsLoading(false);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setIsLoading(false);
+      });
   }, []);
 
   const totalQuestionsNumber: number = questions.length;
+  const currentQuestion: QuestionObject = questions[id];
 
   return (
     <div className="dark h-screen flex items-center justify-center flex-col text-zinc-950 dark:text-zinc-50 dark:bg-zinc-950">
       {isLoading ? (
         <Loading />
-      ) : questions[id] ? (
-        <Question
+      ) : currentQuestion ? (
+        <CurrentQuestion
           setCorrectAnswers={setCorrectAnswers}
           totalQuestionsNumber={totalQuestionsNumber}
           id={id}
           setId={setId}
-          arrQuestions={questions}
+          questions={questions}
         />
       ) : (
         <>

@@ -3,10 +3,10 @@ interface Props {
   totalQuestionsNumber: number;
 }
 
-const QuizSummaryDetails: React.FC<Props> = ({
+const QuizSummaryDetails = ({
   correctAnswers,
   totalQuestionsNumber,
-}) => {
+}: Props) => {
   const incorrectAnswers: number = totalQuestionsNumber - correctAnswers;
   const percentCorrectAnswers: number = Math.round(
     (correctAnswers * 100) / totalQuestionsNumber

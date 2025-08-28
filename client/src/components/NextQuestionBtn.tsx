@@ -16,7 +16,7 @@ const NextQuestionBtn = ({
   addToResult,
   answerValue,
 }: Props) => {
-  const handleClick = () => {
+  const handleClick = (): void => {
     setId((prev) => prev + 1);
     setAnswerValue(undefined);
     addToResult(answerValue);

@@ -13,7 +13,7 @@ interface Props {
 const QuestionAnswers = ({ currentQuestionAnswers, setAnswerValue }: Props) => {
   return (
     <ol className="list-[lower-alpha] list-inside grid grid-cols-2 gap-1 max-md:grid-cols-1">
-      {currentQuestionAnswers.map((answer, id) => (
+      {currentQuestionAnswers.map((answer: string, id: number) => (
         <AnswerBtn
           key={id}
           id={id}
