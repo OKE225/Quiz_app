@@ -1,35 +1,20 @@
-import { useEffect, useState } from "react";
 import Loading from "./components/Loading";
 import CurrentQuestion from "./components/CurrentQuestion";
 import QuizSummary from "./components/QuizSummary";
 import QuizSummaryDetails from "./components/QuizSummaryDetails";
-import type { QuestionObject } from "./interfaces/interfaces";
+import useQuiz from "./hooks/useQuiz";
 
 const App = () => {
-  const [questions, setQuestions] = useState<QuestionObject[]>([]);
-  const [id, setId] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [correctAnswers, setCorrectAnswers] = useState<number>(0);
-
-  useEffect(() => {
-    fetch("http://localhost:5001/")
-      .then((response) => response.json())
-      .then((data) => {
-        const arr = data.quizQuestionsList;
-        const randomSortArr = arr.sort(() => 0.5 - Math.random());
-
-        setQuestions(randomSortArr);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsLoading(false);
-      });
-  }, []);
-
-  const totalQuestionsNumber: number = questions.length;
-  const currentQuestion: QuestionObject = questions[id];
-
+  const {
+    questions,
+    id,
+    setId,
+    isLoading,
+    correctAnswers,
+    setCorrectAnswers,
+    totalQuestionsNumber,
+    currentQuestion,
+  } = useQuiz();
   return (
     <div className="dark h-screen flex items-center justify-center flex-col text-zinc-950 dark:text-zinc-50 dark:bg-zinc-950">
       {isLoading ? (
